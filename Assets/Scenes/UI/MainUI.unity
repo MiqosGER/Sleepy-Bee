@@ -275,14 +275,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868595089571974068, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Text
+      value: Tired Bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 868595089571974068, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 868595089571974068, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3299877
+      objectReference: {fileID: 0}
+    - target: {fileID: 868595089571974068, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Color.r
+      value: 0.026867345
+      objectReference: {fileID: 0}
     - target: {fileID: 3417191212220087586, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 259548508}
+    - target: {fileID: 4079091523137719753, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_text
+      value: Antonino Cavaleri
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800932337407347021, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -43085694063055451, guid: 32acb89e4fcb15f8795021e47a691fff, type: 3}
     - target: {fileID: 4862019892785645237, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 259548508}
+    - target: {fileID: 5064458742995177600, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -43085694063055451, guid: 32acb89e4fcb15f8795021e47a691fff, type: 3}
     - target: {fileID: 6506471700136516907, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 380.09988
@@ -327,10 +355,18 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 259548508}
+    - target: {fileID: 6991471477567578306, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_text
+      value: '-'
+      objectReference: {fileID: 0}
     - target: {fileID: 8595063917180850175, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
       propertyPath: m_Name
       value: MenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8826173298134536493, guid: 115e1562f55b24043bc25751fc6a8c68, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -43085694063055451, guid: 32acb89e4fcb15f8795021e47a691fff, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

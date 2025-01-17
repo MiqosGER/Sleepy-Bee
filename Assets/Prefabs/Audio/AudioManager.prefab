@@ -309,9 +309,9 @@ MonoBehaviour:
   MusicSource: {fileID: 7711798958705978052}
   SFXSource: {fileID: 8576600053714405206}
   AudioMixer: {fileID: 24100000, guid: 3bba47b688eee0283a374bb6d2ee0fd0, type: 2}
-  UI: {fileID: 8300000, guid: 1c4ad5b69da2be3d8bd705227d59d30b, type: 3}
-  Game: {fileID: 8300000, guid: 1fd81ec969190f176a2416cadd4fc4aa, type: 3}
-  Loose: {fileID: 8300000, guid: 76073757a6e1ae176a922940700bee05, type: 3}
+  UI: {fileID: 8300000, guid: 9855a3a399485ce859ef5f946389fc8f, type: 3}
+  Game: {fileID: 8300000, guid: eb3b3ef2df1e938b789fb0caa89c82fd, type: 3}
+  Loose: {fileID: 8300000, guid: bbc01b01873a2f2b5a2e514597ecf90d, type: 3}
 --- !u!114 &288378190506075771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,10 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a16b1651fa810a44a198370d031f95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 8300000, guid: 799dd652c745a85f3a3c78327d13b78d, type: 3}
+  flapSound: {fileID: 0}
   menuSound: {fileID: 8300000, guid: 3f42a933f6f577b33a526e969c23e11f, type: 3}
-  jumpSound: {fileID: 8300000, guid: b344a0ea19b7eb0e6b12fa647dd43e17, type: 3}
-  attackSound: {fileID: 8300000, guid: 0d03c9ccc9ebd2b77ba1520411d8266c, type: 3}
+  hitSound: {fileID: 0}
   SFXMixerGroup: {fileID: -339286943646182909, guid: 3bba47b688eee0283a374bb6d2ee0fd0, type: 2}
 --- !u!114 &3278887935064634548
 MonoBehaviour:

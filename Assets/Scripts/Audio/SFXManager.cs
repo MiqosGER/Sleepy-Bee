@@ -3,10 +3,10 @@ using UnityEngine.Audio;
 
 public class SFXManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip flapSound;
     [SerializeField] private AudioClip menuSound;
-    [SerializeField] private AudioClip jumpSound;
-    [SerializeField] private AudioClip attackSound;
+
+    [SerializeField] private AudioClip hitSound;
 
     [SerializeField] private AudioMixerGroup SFXMixerGroup;  // Reference to the SFX mixer group.
 
@@ -36,20 +36,10 @@ public class SFXManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Play the hit sound through the SFX mixer group.
-            PlaySound(hurtSound);
+            PlaySound(hitSound);
         }
     }
 
-    // Play the hurt sound effect.
-    public void PlayHurtSound()
-    {
-        PlaySound(hurtSound);
-    }
-    public void PlayAttackSound()
-    {
-        // Play the hurt sound through the SFX mixer group.
-        PlaySound(attackSound);
-    }
     public void PlayMenuSound()
     {
         // Play the menu sound through the SFX mixer group.
@@ -61,11 +51,4 @@ public class SFXManager : MonoBehaviour
         // Invert the value of isActive.
         isActive = !isActive;
     }
-    
-    // Play the jump sound effect.
-       public void PlayJumpSound()
-       {
-           // Play the jump sound through the SFX mixer group.
-           PlaySound(jumpSound);
-       }
 }

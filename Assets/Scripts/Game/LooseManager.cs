@@ -1,78 +1,35 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LooseManager : MonoBehaviour
 {
-    private bool isTouchingStage = false;  // Ob der Spieler das Stage-Tag berührt
-    private float touchTime = 0f;  // Zeit, wie lange der Spieler das Tag berührt
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         if (!isTouchingStage)
-    //         {
-    //             // Startet die Coroutine, wenn der Spieler das Stage-Tag berührt
-    //             StartCoroutine(TouchTimer());
-    //         }
-    //     }
-    // }
-    
-
-    // private void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         // Stoppt die Coroutine und setzt die Zeit zurück, wenn der Spieler das Stage-Tag verlässt
-    //         StopCoroutine(TouchTimer());
-    //         touchTime = 0f;
-    //         isTouchingStage = false;
-    //         Debug.Log("Not touching stage");
-    //     }
-    // }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-                if (collision.gameObject.CompareTag("Player"))
-        {
-        touchTime = 0f;
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
+        // Überprüfe, ob das kollidierte Objekt den Tag "Player" hat
         if (collision.gameObject.CompareTag("Player"))
         {
-           touchTime += Time.deltaTime;
-            if (touchTime >= 1f)
+            // Überprüfe, ob das aktuelle Objekt den Tag "Borders" oder "Webs" hat
+            if (CompareTag("Borders") || CompareTag("Webs"))
             {
-                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-                // Ruft die Methode zum Laden der nächsten Szene auf
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+                // Szene wechseln: Lade die nächste Szene
+                LoadNextScene();
             }
-
         }
     }
 
-    private IEnumerator TouchTimer()
+    private void LoadNextScene()
     {
-        isTouchingStage = true;
-Debug.Log("coroutine started");
-        // Solange der Spieler das Tag berührt, erhöhe die Zeit
-        while (isTouchingStage)
-        {
-            touchTime += Time.deltaTime;
-            if (touchTime >= 1f)
-            {
-                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-                // Ruft die Methode zum Laden der nächsten Szene auf
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
-                yield break; // Beendet die Coroutine nach dem Laden der nächsten Szene
-            }
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
 
-            yield return null; // Wartet bis zum nächsten Frame
+        // Prüfe, ob die nächste Szene existiert
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex, LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.LogWarning("Keine weitere Szene im Build-Index vorhanden!");
         }
     }
 }

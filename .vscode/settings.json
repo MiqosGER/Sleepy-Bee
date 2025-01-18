@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tired-Bee.sln"
+    "dotnet.defaultSolution": "Sleepy-Bee.sln"
 }

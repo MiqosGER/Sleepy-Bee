@@ -1,22 +1,34 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Limiter : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
-    // Methode, die aufgerufen wird, wenn eine Kollision mit einem anderen Collider stattfindet
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Prueft, ob das kollidierende Objekt den Tag "Player" hat
-        if (collision.gameObject.CompareTag("Player"))
+        // Prüft, ob das Objekt, das den Trigger betritt, den Tag "Player" hat
+        if (collision.CompareTag("Player"))
         {
-            // Lade die aktuelle Szene neu
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Wechselt zur nächsten Szene
+            LoadNextScene();
         }
-        // Prueft, ob das kollidierende Objekt den Layer "Borders" hat
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Borders"))
+    }
+
+    private void LoadNextScene()
+    {
+        // Holt den aktuellen Szenenindex
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Berechnet den nächsten Szenenindex
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Prüft, ob eine weitere Szene im Build vorhanden ist
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            // Ignoriere die Kollision mit dem Rigidbody
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("Keine weitere Szene im Build-Index vorhanden!");
         }
     }
 }

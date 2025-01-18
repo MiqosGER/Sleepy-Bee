@@ -8,8 +8,8 @@ public class LooseManager : MonoBehaviour
         // Überprüfe, ob das kollidierte Objekt den Tag "Player" hat
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Überprüfe, ob das aktuelle Objekt den Tag "Borders" oder "Webs" hat
-            if (CompareTag("Borders") || CompareTag("Webs"))
+            // Überprüfe, ob das aktuelle Objekt den Tag "Limiters" oder "Webs" hat
+            if (CompareTag("Limiters") || CompareTag("Webs"))
             {
                 // Szene wechseln: Lade die nächste Szene
                 LoadNextScene();

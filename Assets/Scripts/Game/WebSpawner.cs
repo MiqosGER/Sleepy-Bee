@@ -5,38 +5,40 @@ public class WebSpawner : MonoBehaviour
 {
     public List<GameObject> webPrefabs; // Liste von verschiedenen Prefabs
     public int poolSize = 10;          // Anzahl der Objekte im Pool
-    public float spawnInterval = 2f;  // Zeitintervall für das Spawnen
+    public float spawnInterval = 1f;  // Zeitintervall für das Spawnen
     public float heightOffset = 2f;   // Höhenversatz für die Spawnposition
-    public float spawnXPosition = 10f; // X-Position, wo Objekte erscheinen
+    public float spawnXPosition = 20f; // X-Position, wo Objekte erscheinen
     public float moveSpeed = 5f;      // Geschwindigkeit der Objekte
 
     private Transform playerTransform;  // Referenz zur Spielfigur
-    private List<GameObject> upperPool; // Pool für obere Objekte
-    private List<GameObject> lowerPool; // Pool für untere Objekte
+    private List<GameObject> objectPool; // Pool der Objekte
+    private float nextSpawnTime = 0f;   // Zeit für den nächsten Spawn
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        InitializePools();
-        InvokeRepeating("SpawnWebs", 0f, spawnInterval); // Wiederholtes Spawnen starten
+        InitializePool();
     }
 
-    void InitializePools()
+    void Update()
     {
-        upperPool = new List<GameObject>();
-        lowerPool = new List<GameObject>();
+        if (Time.time >= nextSpawnTime)
+        {
+            SpawnWebFromPool();
+            nextSpawnTime = Time.time + spawnInterval;
+        }
+    }
+
+    void InitializePool()
+    {
+        objectPool = new List<GameObject>();
 
         // Erstelle den Object Pool
         for (int i = 0; i < poolSize; i++)
         {
-            // Zufälliges Prefab aus der Liste auswählen
-            GameObject upperWeb = Instantiate(GetRandomPrefab());
-            upperWeb.SetActive(false); // Deaktivieren
-            upperPool.Add(upperWeb);
-
-            GameObject lowerWeb = Instantiate(GetRandomPrefab());
-            lowerWeb.SetActive(false); // Deaktivieren
-            lowerPool.Add(lowerWeb);
+            GameObject web = Instantiate(GetRandomPrefab());
+            web.SetActive(false); // Deaktivieren
+            objectPool.Add(web);
         }
     }
 
@@ -47,19 +49,13 @@ public class WebSpawner : MonoBehaviour
         return webPrefabs[randomIndex];
     }
 
-    void SpawnWebs()
+    void SpawnWebFromPool()
     {
-        // Obere und untere Objekte spawnen
-        SpawnWebFromPool(upperPool, Random.Range(0f, heightOffset));
-        SpawnWebFromPool(lowerPool, Random.Range(-heightOffset, 0f));
-    }
-
-    void SpawnWebFromPool(List<GameObject> pool, float yOffset)
-    {
-        foreach (GameObject web in pool)
+        foreach (GameObject web in objectPool)
         {
             if (!web.activeInHierarchy)
             {
+                float yOffset = Random.Range(-heightOffset, heightOffset);
                 Vector3 spawnPosition = new Vector3(playerTransform.position.x + spawnXPosition, yOffset, 0);
                 web.transform.position = spawnPosition;
                 web.SetActive(true);

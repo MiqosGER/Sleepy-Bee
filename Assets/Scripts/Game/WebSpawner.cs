@@ -1,81 +1,95 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class WebSpawner : MonoBehaviour
 {
-    public List<GameObject> webPrefabs; // Liste von verschiedenen Prefabs
-    public int poolSize = 10;          // Anzahl der Objekte im Pool
-    public float spawnInterval = 1f;  // Zeitintervall für das Spawnen
-    public float heightOffset = 2f;   // Höhenversatz für die Spawnposition
-    public float spawnXPosition = 20f; // X-Position, wo Objekte erscheinen
-    public float moveSpeed = 5f;      // Geschwindigkeit der Objekte
+    public List<GameObject> webPrefabs; // List of different prefabs
+    public int poolSize = 10;          // Number of objects in the pool
+    public float spawnInterval = 1f;  // Interval between spawns
+    public float heightOffset = 2f;   // Vertical offset for spawn position
+    public float spawnXPosition = 20f; // X position where objects spawn
+    public float moveSpeed = 5f;      // Speed of the objects
 
-    private Transform playerTransform;  // Referenz zur Spielfigur
-    private List<GameObject> objectPool; // Pool der Objekte
-    private float nextSpawnTime = 0f;   // Zeit für den nächsten Spawn
+    private Transform playerTransform;  // Reference to the player character
+    private Queue<GameObject> objectPool; // Object pool for reusable objects
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         InitializePool();
-    }
-
-    void Update()
-    {
-        if (Time.time >= nextSpawnTime)
-        {
-            SpawnWebFromPool();
-            nextSpawnTime = Time.time + spawnInterval;
-        }
+        StartCoroutine(SpawnWebs());
     }
 
     void InitializePool()
     {
-        objectPool = new List<GameObject>();
+        objectPool = new Queue<GameObject>();
 
-        // Erstelle den Object Pool
+        // Create the object pool
         for (int i = 0; i < poolSize; i++)
         {
             GameObject web = Instantiate(GetRandomPrefab());
-            web.SetActive(false); // Deaktivieren
-            objectPool.Add(web);
+            web.SetActive(false); // Disable initially
+            objectPool.Enqueue(web);
         }
     }
 
     GameObject GetRandomPrefab()
     {
-        // Zufälliges Prefab aus der Liste zurückgeben
+        // Return a random prefab from the list
         int randomIndex = Random.Range(0, webPrefabs.Count);
         return webPrefabs[randomIndex];
     }
 
+    IEnumerator SpawnWebs()
+    {
+        while (true) // Infinite loop for continuous spawning
+        {
+            SpawnWebFromPool();
+            yield return new WaitForSeconds(spawnInterval); // Wait for the specified interval
+        }
+    }
+
     void SpawnWebFromPool()
     {
-        foreach (GameObject web in objectPool)
+        if (objectPool.Count > 0)
         {
-            if (!web.activeInHierarchy)
+            GameObject web = objectPool.Dequeue();
+            float yOffset = Random.Range(-heightOffset, heightOffset);
+            Vector3 spawnPosition = new Vector3(playerTransform.position.x + spawnXPosition, yOffset, 0);
+            web.transform.position = spawnPosition;
+            web.SetActive(true);
+
+            // Reactivate all child objects
+            foreach (Transform child in web.transform)
             {
-                float yOffset = Random.Range(-heightOffset, heightOffset);
-                Vector3 spawnPosition = new Vector3(playerTransform.position.x + spawnXPosition, yOffset, 0);
-                web.transform.position = spawnPosition;
-                web.SetActive(true);
-
-                // Aktiviere alle deaktivierten Child-Objekte
-                foreach (Transform child in web.transform)
-                {
-                    child.gameObject.SetActive(true);
-                }
-
-                // Füge dem Objekt das Bewegungs-Skript hinzu
-                if (web.GetComponent<WebMover>() == null)
-                {
-                    web.AddComponent<WebMover>().Initialize(moveSpeed);
-                }
-
-                return;
+                child.gameObject.SetActive(true);
             }
+
+            // Add movement script if not already present
+            if (web.GetComponent<WebMover>() == null)
+            {
+                web.AddComponent<WebMover>().Initialize(moveSpeed);
+            }
+
+            // Return the object to the pool when it is deactivated
+            StartCoroutine(ReturnToPoolWhenInactive(web));
+        }
+        else
+        {
+            Debug.LogWarning("Pool exhausted! Consider increasing the pool size.");
+        }
+    }
+
+    IEnumerator ReturnToPoolWhenInactive(GameObject web)
+    {
+        // Wait until the object becomes inactive
+        while (web.activeInHierarchy)
+        {
+            yield return null;
         }
 
-        Debug.LogWarning("Pool exhausted! Consider increasing the pool size.");
+        web.SetActive(false);
+        objectPool.Enqueue(web);
     }
 }

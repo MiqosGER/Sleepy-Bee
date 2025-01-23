@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Antonino Cavaleri
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ea24ee7409805fb9d9ce502b867e1fba, type: 2}
-  m_sharedMaterial: {fileID: -3570080130956603900, guid: ea24ee7409805fb9d9ce502b867e1fba, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
+  m_sharedMaterial: {fileID: -6149053385393927957, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -77,10 +77,10 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
-  m_colorMode: 2
+  m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 0.03137255, g: 0.28627452, b: 0.101960786, a: 1}
-    topRight: {r: 0.03137255, g: 0.28627452, b: 0.101960786, a: 1}
+    topRight: {r: 0.21168064, g: 0.48427665, b: 0.28716874, a: 1}
     bottomLeft: {r: 0.28627452, g: 0.08235294, b: 0.03137255, a: 1}
     bottomRight: {r: 0.28627452, g: 0.08235294, b: 0.03137255, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -443,8 +443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000453, y: -140.33496}
-  m_SizeDelta: {x: 724.8895, y: 116.4352}
+  m_AnchoredPosition: {x: 54.943764, y: -242.85156}
+  m_SizeDelta: {x: 951.6213, y: 321.4687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5187082802596180475
 CanvasRenderer:
@@ -474,10 +474,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits
+  m_text: TAD @OpenGameArt
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ea24ee7409805fb9d9ce502b867e1fba, type: 2}
-  m_sharedMaterial: {fileID: -3570080130956603900, guid: ea24ee7409805fb9d9ce502b867e1fba, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
+  m_sharedMaterial: {fileID: -6149053385393927957, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -486,11 +486,11 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
-  m_colorMode: 1
+  m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 0.03137255, g: 0.28627452, b: 0.101960786, a: 1}
-    topRight: {r: 0.28627452, g: 0.08235294, b: 0.03137255, a: 1}
-    bottomLeft: {r: 0.03137255, g: 0.28627452, b: 0.101960786, a: 1}
+    topRight: {r: 0.21176471, g: 0.4862745, b: 0.2901961, a: 1}
+    bottomLeft: {r: 0.28627452, g: 0.08235294, b: 0.03137255, a: 1}
     bottomRight: {r: 0.28627452, g: 0.08235294, b: 0.03137255, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
@@ -1413,6 +1413,10 @@ PrefabInstance:
     - target: {fileID: 1474618357956260347, guid: 05a9022534d1c1444b062cc7bfe5f869, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474618357956260347, guid: 05a9022534d1c1444b062cc7bfe5f869, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1485271876436192986, guid: 05a9022534d1c1444b062cc7bfe5f869, type: 3}
       propertyPath: m_FontData.m_Font

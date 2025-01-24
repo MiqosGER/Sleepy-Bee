@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+// WebCounter.cs;
+
 
 public class PlayerController : MonoBehaviour
 {
+
     public float upForce = 170f; // The upward force applied when the player clicks
-    public float gravityScale = 2.8f; // The gravity applied to the bird
+    public float gravityScale = 2.8f; // The gravity applied to the Bee
     public Rigidbody2D rb; // The Rigidbody2D component of the player
 
     private bool isDead = false; // A flag to check if the player is dead
+
 
     void Start()
     {
@@ -23,24 +27,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // If the player is not "dead" and the player clicks, the bird moves upwards
+        // If the player is not "dead" and the player clicks, the Bee moves upwards
         if (!isDead)
         {
             // Check if the player clicks or touches the screen
             if (Input.GetButtonDown("Jump"))
             {
-                // Set the Rigidbody's current velocity in the Y-direction to zero to stop the bird
-                rb.linearVelocity = Vector2.zero; // Reset the current velocity to stop the bird
-                rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse); // Apply upward force to make the bird fly
+                // Set the Rigidbody's current velocity in the Y-direction to zero to stop the Bee
+                rb.linearVelocity = Vector2.zero; // Reset the current velocity to stop the Bee
+                rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse); // Apply upward force to make the Bee fly
             }
         }
     }
 
-    // Function to mark the bird as "dead" (e.g., when colliding with obstacles)
+    // Function to mark the Bee as "dead" (e.g., when colliding with obstacles)
     public void Die()
     {
         isDead = true;
-        rb.linearVelocity = Vector2.zero; // Stop the bird's movement when it is dead
+        rb.linearVelocity = Vector2.zero; // Stop the Bee's movement when it is dead
     }
 
     // Function to handle collision with 2D objects
@@ -48,7 +52,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Webs"))
         {
+            // Save the score from the WebCounter.cs
+            //SaveHighScore();
+
+
+            // Call the Die function to mark the Bee as dead
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+
 }

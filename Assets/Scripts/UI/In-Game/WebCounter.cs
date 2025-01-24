@@ -13,7 +13,7 @@ public class WebCounter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the collider is the Player
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("WebCounter"))
         {
             Debug.Log("Player entered the collider.");
 
@@ -27,10 +27,11 @@ public class WebCounter : MonoBehaviour
             // Check if the current score is higher than the stored high score
             if (currentScore > highScore)
             {
-                highScore = currentScore;
-                Debug.Log("New High Score: " + highScore);
                 // Save the new high score
                 SaveHighScore();
+                highScore = currentScore;
+                UpdateScoreUI();
+                Debug.Log("New High Score: " + highScore);
             }
         }
     }

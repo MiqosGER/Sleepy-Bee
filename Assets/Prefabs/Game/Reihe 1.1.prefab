@@ -338,7 +338,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7442058128816209242}
-  - component: {fileID: 8851008740578963532}
   - component: {fileID: 6127558502988930344}
   m_Layer: 0
   m_Name: WebCounter
@@ -362,19 +361,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7556965775847870598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8851008740578963532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6941441739810654617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b237ad7d90fd19943aad8c24779daf76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmpText: {fileID: 0}
 --- !u!61 &6127558502988930344
 BoxCollider2D:
   m_ObjectHideFlags: 0

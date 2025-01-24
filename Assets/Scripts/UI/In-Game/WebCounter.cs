@@ -1,40 +1,38 @@
 using TMPro;
 using UnityEngine;
 
-public class WebCounter : MonoBehaviour
+public class TriggerIncrement : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textMeshProUi; // Das TMP-Textfeld für den Zähler
-    private int counter = 0; // Der aktuelle Zählerstand
+    public TMP_Text tmpText; // TMP Text that will be updated
+    private int counter = 0; // The counter to increment
+    private bool hasEntered = false; // Prevent multiple triggers
 
-    private bool isPlayerInside = false; // Gibt an, ob der Spieler im Trigger ist
+    void Start()
+    {
+        tmpText.text = counter.ToString(); // Initialize the TMP text                                    
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Prüfe, ob das andere Objekt den Tag "Player" hat
-        if (other.CompareTag("Player") && !isPlayerInside)
-            Debug.Log("Player entered trigger"); // Gebe eine Meldung aus
+        Debug.Log("Enter");
+        // Check if the object entering the trigger is the player
+        if (other.CompareTag("Player") && !hasEntered)
         {
-            counter++; // Erhöhe den Zähler
-            UpdateCounterUI(); // Aktualisiere die Anzeige im TextMeshPro
-            isPlayerInside = true; // Spieler ist jetzt im Trigger
-            Debug.Log("Counter: " + counter); // Gebe den aktuellen Zählerstand aus
+            hasEntered = true; // Set the flag to true to prevent multiple increments
+            Debug.Log("Counter: " + counter);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Prüfe, ob der Spieler den Trigger verlässt
-        if (other.CompareTag("Player"))
+        Debug.Log("Exit");
+        // Reset the flag when the player exits the trigger area
+        if (other.CompareTag("Player") && hasEntered)
         {
-            isPlayerInside = false; // Spieler hat den Trigger verlassen
-            Debug.Log("Player left trigger"); // Gebe eine Meldung aus
+            hasEntered = false;
+            counter++; // Increment the counter
+            tmpText.text = counter.ToString(); // Update the TMP text
+            Debug.Log("Counter: " + counter);
         }
-    }
-
-    private void UpdateCounterUI()
-    {
-        // Zeige den aktuellen Zählerwert im TextMeshPro an
-        textMeshProUi.text = counter.ToString();
-        Debug.Log("Updated counter UI"); // Gebe eine Meldung aus
     }
 }

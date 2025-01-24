@@ -443,8 +443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.943764, y: -242.85156}
-  m_SizeDelta: {x: 951.6213, y: 321.4687}
+  m_AnchoredPosition: {x: 2.9201, y: -242.85156}
+  m_SizeDelta: {x: 1055.6685, y: 321.4687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5187082802596180475
 CanvasRenderer:
@@ -474,7 +474,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TAD @OpenGameArt
+  m_text: 'TAD @OpenGameArt
+
+    bart @OpenGameArt'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
   m_sharedMaterial: {fileID: -6149053385393927957, guid: 8f825552b244f5feabcf229775bce05b, type: 2}
@@ -973,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972024478326501657, guid: 7342cdfa58fbcb64d9278add08f7f2b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3946006638442644143, guid: 7342cdfa58fbcb64d9278add08f7f2b9, type: 3}
       propertyPath: m_SizeDelta.x

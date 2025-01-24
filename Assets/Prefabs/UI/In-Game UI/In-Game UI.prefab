@@ -193,7 +193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccdb1c7afaeb6097aa23b4fa116d335b, type: 2}
   m_sharedMaterial: {fileID: -8373874752021790985, guid: ccdb1c7afaeb6097aa23b4fa116d335b, type: 2}
@@ -371,7 +371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6393464356795989248}
-  - component: {fileID: 4546408851877225164}
   - component: {fileID: 4776476210779413690}
   - component: {fileID: 8236500719909089859}
   m_Layer: 5
@@ -401,19 +400,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3642, y: -221}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4546408851877225164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8490018906250734262}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b237ad7d90fd19943aad8c24779daf76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshProUi: {fileID: 1625027863113332835}
 --- !u!222 &4776476210779413690
 CanvasRenderer:
   m_ObjectHideFlags: 0

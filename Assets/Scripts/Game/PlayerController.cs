@@ -1,36 +1,54 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float flapStrength = 5f;  // Stärke des Flugs (wie stark der Spieler nach oben fliegt)
-    public float fallSpeed = 2f;  // Die Geschwindigkeit, mit der der Spieler fällt (optional)
-    private Rigidbody2D rb;  // Referenz zum Rigidbody2D der Spielfigur
+    public float upForce = 170f; // The upward force applied when the player clicks
+    public float gravityScale = 2.8f; // The gravity applied to the bird
+    public Rigidbody2D rb; // The Rigidbody2D component of the player
+
+    private bool isDead = false; // A flag to check if the player is dead
 
     void Start()
     {
-        // Hole das Rigidbody2D-Komponenten der Spielfigur
-        rb = GetComponent<Rigidbody2D>();
+        // Gets the Rigidbody2D component if it hasn't been assigned yet
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        // Sets the gravity scale to the desired strength
+        rb.gravityScale = gravityScale;
     }
 
     void Update()
     {
-        // Wenn die Leertaste gedrückt wird, fliegt der Spieler nach oben
-        if (Input.GetKeyDown(KeyCode.Space))
+        // If the player is not "dead" and the player clicks, the bird moves upwards
+        if (!isDead)
         {
-            Flap();
-        }
-        
-        // Optional: Wenn der Spieler die Leertaste nicht drückt, fällt er mit einer bestimmten Geschwindigkeit
-        // Hier könnte man auch Schwerkraft anpassen oder die Fallgeschwindigkeit direkt beeinflussen.
-        if (rb.linearVelocity.y < 0)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -fallSpeed);  // Kontrolliert die Geschwindigkeit des Falls
+            // Check if the player clicks or touches the screen
+            if (Input.GetButtonDown("Jump"))
+            {
+                // Set the Rigidbody's current velocity in the Y-direction to zero to stop the bird
+                rb.linearVelocity = Vector2.zero; // Reset the current velocity to stop the bird
+                rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse); // Apply upward force to make the bird fly
+            }
         }
     }
 
-    void Flap()
+    // Function to mark the bird as "dead" (e.g., when colliding with obstacles)
+    public void Die()
     {
-        // Setzt die Geschwindigkeit des Spielers in Y-Richtung (nach oben)
-        rb.linearVelocity = Vector2.up * flapStrength;
+        isDead = true;
+        rb.linearVelocity = Vector2.zero; // Stop the bird's movement when it is dead
+    }
+
+    // Function to handle collision with 2D objects
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Webs"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

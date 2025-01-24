@@ -62,7 +62,7 @@ public class WebCounter : MonoBehaviour
     }
 
     // Save the high score using PlayerPrefs (could also be a prefab save method)
-    private void SaveHighScore()
+    public void SaveHighScore()
     {
         PlayerPrefs.SetInt("HighScore", highScore);
         PlayerPrefs.Save();

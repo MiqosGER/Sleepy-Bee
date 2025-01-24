@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// WebCounter.cs;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isDead = false; // A flag to check if the player is dead
 
+    public WebCounter webCounter; // Reference to the WebCounter script
 
     void Start()
     {
@@ -53,8 +52,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Webs"))
         {
             // Save the score from the WebCounter.cs
-            //SaveHighScore();
-
+            webCounter.SaveHighScore();
 
             // Call the Die function to mark the Bee as dead
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

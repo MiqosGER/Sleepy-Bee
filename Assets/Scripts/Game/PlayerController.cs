@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 
-    public float upForce = 170f; // The upward force applied when the player clicks
-    public float gravityScale = 2.8f; // The gravity applied to the Bee
+    public float upForce = 170f; // The upward force applied when the player clicks - Seems to best fit!
+    public float gravityScale = 2.8f; // The gravity applied to the Bee - Seems to best fit!
     public Rigidbody2D rb; // The Rigidbody2D component of the player
 
     private bool isDead = false; // A flag to check if the player is dead

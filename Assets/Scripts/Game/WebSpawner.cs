@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class WebSpawner : MonoBehaviour
 {
     public List<GameObject> webPrefabs; // List of different prefabs
-    public int poolSize = 10;          // Number of objects in the pool
-    public float spawnInterval = 1f;  // Interval between spawns
-    public float heightOffset = 2f;   // Vertical offset for spawn position
-    public float spawnXPosition = 20f; // X position where objects spawn
-    public float moveSpeed = 5f;      // Speed of the objects
+    public int poolSize = 6;          // Number of objects in the pool - Seems to best fit!
+    public float spawnInterval = 2.5f;  // Interval between spawns - Seems to best fit!
+    public float heightOffset = 2f;   // Vertical offset for spawn position - Seems to best fit!
+    public float spawnXPosition = 20f; // X position where objects spawn - Seems to best fit!
+    public float moveSpeed = 5f;      // Speed of the objects - Seems to best fit!
 
     private Transform playerTransform;  // Reference to the player character
     private Queue<GameObject> objectPool; // Object pool for reusable objects

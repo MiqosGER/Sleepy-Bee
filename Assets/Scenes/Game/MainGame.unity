@@ -961,7 +961,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917239440}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1594,8 +1594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5137607, y: 0.44768295}
   m_AnchorMax: {x: 0.52716696, y: 0.4613047}
-  m_AnchoredPosition: {x: -993.32, y: -491.54}
-  m_SizeDelta: {x: 25.74105, y: 13.821453}
+  m_AnchoredPosition: {x: -993.31995, y: -491.55127}
+  m_SizeDelta: {x: 25.7411, y: 14.2724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1695511535
 GameObject:
@@ -3080,8 +3080,8 @@ MonoBehaviour:
   - {fileID: 2516908803124219320}
   - {fileID: 3848199036721290309}
   - {fileID: 7923045550175502272}
-  poolSize: 8
-  spawnInterval: 2.3
+  poolSize: 6
+  spawnInterval: 2.5
   heightOffset: 2
   spawnXPosition: 20
   moveSpeed: 5
@@ -4825,7 +4825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7730043955656650295
 GameObject:
   m_ObjectHideFlags: 0

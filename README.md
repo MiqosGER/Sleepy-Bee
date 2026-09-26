@@ -1,2 +1,3 @@
-# Tired-Bee
-A flappy Bird Clone
+# Sleepy-Bee
+
+A Flappy Bird-inspired game with its own twist.
